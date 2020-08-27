@@ -113,4 +113,6 @@ alias lrt='ls -lrt'
 alias v='vim'
 alias tmx='tmux new -s shz'
 
+unset LESSOPEN
+export PATH=$PATH:$HOME/local/bin
 cd $HOME

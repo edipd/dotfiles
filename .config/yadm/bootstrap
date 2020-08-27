@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Because Git submodule commands cannot operate without a work tree, they must
+# be run from within $HOME (assuming this is the root of your dotfiles)
+cd "$HOME"
+
+echo "Init submodules"
+yadm submodule update --recursive --init
+
+echo "Updating the yadm repo origin URL"
+yadm remote set-url origin "https://github.com/edipd/dotfiles.git"
+
+echo "Changing shell to zsh"
+ZSH_PATH=`which zsh`
+chsh -s $ZSH_PATH $USER

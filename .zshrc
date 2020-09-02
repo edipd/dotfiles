@@ -4,6 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+ZSH_DISABLE_COMPFIX="true"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -70,17 +71,28 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 git
-autojump
+extract
 colored-man-pages
 zsh-syntax-highlighting
 zsh-autosuggestions
 )
 
+if [[ $(uname) == "SunOS" ]]
+then
+    plugins=(
+    git
+    extract
+    colored-man-pages
+    zsh-autosuggestions
+    )
+fi
+
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="$HOME/local/share/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -105,14 +117,20 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export PATH=$PATH:$HOME/local/bin
+eval "$(fasd --init auto)"
 set -o vi
+unset LESSOPEN
+
+
 alias ls='ls --color -h'
 alias ll='ls -l'
 alias la='ls -a'
 alias lrt='ls -lrt'
 alias v='vim'
 alias tmx='tmux new -s shz'
+#work specific alias
+alias hf='cd /bb/bigstorn/trading/g1271/hshi33/hfoffline/;. ./hfenv.sh; export HF_LOG_STDOUT=0'
 
-unset LESSOPEN
-export PATH=$PATH:$HOME/local/bin
 cd $HOME
+

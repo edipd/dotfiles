@@ -134,3 +134,5 @@ alias hf='cd /bb/bigstorn/trading/g1271/hshi33/hfoffline/;. ./hfenv.sh; export H
 
 cd $HOME
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
